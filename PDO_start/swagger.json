@@ -1,0 +1,130 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/student/read.php": {
+            "get": {
+                "tags": [
+                    "student"
+                ],
+                "summary": "xuất ra thông tin tất cả sinh viên",
+                "description": "Get all info",
+                "operationId": "read",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page number",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/studentReadAllResponse"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    }
+                }
+            }
+        },
+        "/api/student/read_single.php": {
+            "get": {
+                "tags": [
+                    "student"
+                ],
+                "summary": "Xuất ra thông tin một sinh viên dựa trên id",
+                "description": "Get one info",
+                "operationId": "read_single",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "ID of student",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/studentReadSigleResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Student": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "studentReadAllResponse": {
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/Student/properties/id"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/Student/properties/name"
+                    }
+                },
+                "type": "object"
+            },
+            "studentReadSigleResponse": {
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/Student/properties/id"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/Student/properties/name"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "parameters": {}
+    }
+}
