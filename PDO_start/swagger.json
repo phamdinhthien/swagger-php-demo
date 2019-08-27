@@ -45,7 +45,10 @@
                     "404": {
                         "description": "Pet not found"
                     }
-                }
+                },
+                "security": [
+                    "bearer"
+                ]
             }
         },
         "/api/student/read_single.php": {
@@ -85,7 +88,10 @@
                     "404": {
                         "description": "Pet not found"
                     }
-                }
+                },
+                "security": [
+                    "bearer"
+                ]
             }
         }
     },
@@ -125,6 +131,12 @@
                 "type": "object"
             }
         },
-        "parameters": {}
+        "parameters": {},
+        "securitySchemes": {
+            "bearer": {
+                "type": "apiKey",
+                "bearerFormat": "JWT"
+            }
+        }
     }
 }

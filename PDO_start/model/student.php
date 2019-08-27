@@ -8,6 +8,12 @@ use OpenApi\Annotations as OA;
      *   )
      */
 
+
+     /**
+      *@OA\SecurityScheme(bearerFormat="JWT", type="apiKey", securityScheme="bearer") 
+      *
+      */
+
     /**
      * @OA\Schema()
      */
@@ -36,6 +42,7 @@ use OpenApi\Annotations as OA;
     /**
     * @OA\Get(
         * path="/api/student/read.php",
+        * security={"bearer"},
         * tags={"student"},
         * summary="xuất ra thông tin tất cả sinh viên",
         * operationId="read",
@@ -71,6 +78,7 @@ use OpenApi\Annotations as OA;
         * @OA\GET(
             * path="/api/student/read_single.php",
             * tags={"student"},
+            * security={"bearer"},
             * summary="Xuất ra thông tin một sinh viên dựa trên id",
             * description="Get one info",
             * operationId="read_single",

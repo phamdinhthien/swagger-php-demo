@@ -15,7 +15,7 @@
     if($num > 0){
     $student_arr = [];
     $student_arr['data'] = [];
-    
+    $student_arr['page'] = isset($_GET["page"]) ? $_GET["page"] : null;
     while ($row = $results->fetch(PDO::FETCH_ASSOC)){
         extract($row);
         $item = [
@@ -24,7 +24,6 @@
         ];
         array_push($student_arr['data'], $item);
     }
-    $student_arr['page'] = 1;
 
     echo json_encode($student_arr, JSON_UNESCAPED_UNICODE);
 }
