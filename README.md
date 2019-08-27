@@ -28,4 +28,4 @@
    1.2.  ./openapi path/to/project -o path/to/project/swagger.json
 ```
 
-
+> Reference Link : https://medium.com/@tatianaensslin/how-to-add-swagger-ui-to-php-server-code-f1610c01dc03
